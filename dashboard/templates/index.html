@@ -1,0 +1,151 @@
+{% extends base %}
+
+{% block preamble %}
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="dashboard/static/bootstrap/css/bootstrap.min.css">
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="dashboard/static/css/style.css">
+{% endblock %}
+
+{% block contents %}
+		<!-- Header -->
+		<div id="header">
+			<div class="container py-2">
+				<div class="row align-items-center justify-content-between">
+					<div>
+						<h1>Sales Dashboard</h1>
+					</div>
+					<div>
+						<span>Last Update : 17 Oct 2020</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Indicators -->
+		<div id="indicators">
+			<div class="container py-1">
+				<div class="row">
+					<div class="col-lg-3 col-sm-6 card bg-white">
+						<div class="row align-items-center justify-content-around">
+							<div>
+								<h1>&</h1>
+							</div>
+							<div>
+								<h3>{{ clients }}</h3>
+								<span>Clients</span>
+							</div>
+							<div>
+								<span>↑↑ 7%</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6 card bg-white">
+						<div class="row align-items-center justify-content-around">
+							<div>
+								<h1>$</h1>
+							</div>
+							<div>
+								<h3>{{ revenue }}</h3>
+								<span>Revenue</span>
+							</div>
+							<div>
+								<span>↓↓ 5%</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6 card bg-white">
+						<div class="row align-items-center justify-content-around">
+							<div>
+								<h1>@</h1>
+							</div>
+							<div>
+								<h3>{{ orders }}</h3>
+								<span>Total Orders</span>
+							</div>
+							<div>
+								<span>↑↑ 9%</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6 card bg-white">
+						<div class="row align-items-center justify-content-around">
+							<div>
+								<h1>$</h1>
+							</div>
+							<div>
+								<h3>{{ average_order }}</h3>
+								<span>Average Order</span>
+							</div>
+							<div>
+								<span>↓↓ 6%</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Graphs -->
+		<div class="graphs">
+			<div class="container py-1">
+				<div class="row">
+					<div class="col-lg-3 col-sm-12 card bg-white pt-4">
+						<h5>Goal Rate</h5>
+						<hr>
+						<div class="graph">
+							{{ embed(roots.piechart) }}
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 card bg-white pt-4">
+						<h5>Revenue (Last 7 days)</h5>
+						<hr>
+						<div class="graph">
+							{{ embed(roots.line) }}
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-12 card bg-white pt-4">
+						<h5>Top Products (5)</h5>
+						<hr>
+						<div class="graph">
+							{{ embed(roots.barchart) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Table -->
+		<div class="table">
+			<div class="container py-1">
+				<div class="row">
+					<div class="col-lg-6 col-sm-12 card bg-white pt-4">
+						<h5>Clients Provenance</h5>
+						<hr>
+						<div class="graph">
+							{{ embed(roots.geoplot) }}
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 card bg-white pt-4">
+						<h5>Top Clients (10)</h5>
+						<hr>
+						<div class="graph">
+							{{ embed(roots.table) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div class="container pb-2">
+			<div class="row align-items-center justify-content-between">
+				<div>
+				&copy; Copyright <strong><span>Dashboard</span></strong>. All Rights Reserved
+				</div>
+				<div class="credits">
+					Designed by <a href="https://joekakone.github.io">Joseph Konka</a>
+				</div>
+			</div>
+		</div>
+{% endblock%}
